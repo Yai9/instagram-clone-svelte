@@ -2,7 +2,6 @@
     import Header from '$lib/header/Header.svelte'
     import '../app.postcss'
     console.log(import.meta.env.VITE_APP_NAME)
-    const a: any = 5
 </script>
 
 <Header>
