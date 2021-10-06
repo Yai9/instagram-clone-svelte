@@ -1,18 +1,17 @@
-<script context="module" lang="ts">
+<script context="module">
     export const prerender = true
 </script>
 
 <script lang="ts">
-    import Counter from '$lib/Counter.svelte'
+    import App from '../components/App.svelte'
+    import { firebase, FieldValue } from '../lib/firebase.js'
 </script>
 
 <svelte:head>
-    <title>Home</title>
+    <title>Instagram</title>
 </svelte:head>
 
-<section>
-    <Counter />
-</section>
+<section><App {firebase} {FieldValue} /></section>
 
 <style>
     section {
