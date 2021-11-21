@@ -32,7 +32,7 @@
                     <h1 class="flex justify-center w-full">
                         <a href="/" aria-label="Instagram logo">
                             <img
-                                src="logo.png"
+                                src="../../static/logo.png"
                                 alt="Instagram"
                                 class="mt-2 w-5/6"
                             />

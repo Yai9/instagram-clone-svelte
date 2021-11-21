@@ -20,14 +20,21 @@
 </script>
 
 <script>
+    import Profile from '../../components/Profile.svelte'
     export let result
+
+    $: console.log(result, 'result')
 </script>
 
 <svelte:head>
-    <title>{result && result.username}</title>
+    <title>Instagram - Profile</title>
 </svelte:head>
-<div>
-    {#if result}
-        <p>{result.username}</p>
-    {/if}
-</div>
+
+{#if result}
+    <Profile
+        username={result.username}
+        fullName={result.fullName}
+        followers={result.followers}
+        following={result.following}
+    />
+{/if}

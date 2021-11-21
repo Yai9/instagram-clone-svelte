@@ -4,21 +4,31 @@ import { getUserPhotos, getUserById } from '../services/firebase'
 
 export const usePhotos = async () => {
     let data
+	let followedUserPhotos = []
+	let photos;
+
     const result = await users.subscribe(item => {
         data = item
     })
     result()
-
+	
+    const getTimelinePhotos = async () => {
     const currentUser = await getUserById(data.uid)
     const userId = currentUser.map(user => user.userId)
     const following = currentUser.map(user => user.following)
-
-    const followedUserPhotos = await getUserPhotos(userId, ...following)
-    const photos = followedUserPhotos.map(photo => ({
-        ...photo
+	
+	
+	if(following.length > 0){
+     followedUserPhotos = await getUserPhotos(...userId, ...following)
+     photos = followedUserPhotos.map(photo => ({
+        ...photo,
+	following
     }))
-    console.log(photos, 'photoresult')
-    console.log(following, 'following')
-    console.log(userId, 'photosuserid')
-    return photos
+	}
+	}
+	 await getTimelinePhotos()
+
+	console.log(photos, 'photoresult')
+
+	return photos
 }

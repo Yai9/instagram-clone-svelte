@@ -1,5 +1,5 @@
 <div class="flex justify-center w-full h-screen ">
-    <img src="loader.png" alt="Loader" class="w-32 h-32 my-auto" />
+    <img src="../../static/loader.png" alt="Loader" class="w-32 h-32 my-auto" />
 </div>
 
 <style>

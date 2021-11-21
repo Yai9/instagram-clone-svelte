@@ -1,24 +1,33 @@
 <script>
     import users from '../stores/userStore.js'
+    import profiles from '../stores/profileStore.js'
     import UserPhotos from '../components/UserPhotos.svelte'
     import { onMount } from 'svelte'
     import { usePhotos } from '../hooks/usePhotos.js'
-    import { likeUserPhoto } from '../services/firebase.js'
+    import { getUserById, likeUserPhoto } from '../services/firebase.js'
 
     let photoData
+    let likesArray
     let liked = false
+    let userLikedPhoto = false
 
     onMount(async () => {
+        let data
         photoData = await usePhotos()
-        console.log(photoData, 'photoData')
+        liked = photoData.map(data => data.userLikedPhoto)
     })
+    $: console.log(liked, 'liked0')
 
     const likePhotoHandler = async event => {
+        liked = photoData.map(data => data.userLikedPhoto)
+        const photoId = event.detail
+        liked = !liked
+        console.log(liked, 'liked1')
         if ($users && photoData) {
-            const photoId = event.detail
+            //likesArray = photoData.find(data => data.docId === photoId)
+
             await likeUserPhoto($users.uid, photoId, liked)
         }
-        photoData = await usePhotos()
     }
 
     $: console.log(photoData, 'photodata2')
@@ -34,7 +43,8 @@
                 imageSrc={photo.imageSrc}
                 caption={photo.caption}
                 comments={photo.comments}
-                userLikedPhoto={photo.userLikedPhoto}
+                likes={photo.likes}
+                liked={photo.userLikedPhoto}
                 on:like-user-photo={likePhotoHandler}
             />
         {/each}
