@@ -3,17 +3,20 @@
 
     export async function load({ page }) {
         let pageId = page.params.id
+
+        console.log(pageId)
+
         const user = await firebase
             .firestore()
             .collection('users')
             .where('username', '==', pageId)
             .get()
 
-        const fetchedUser = await user.docs.map(item => ({
+        const fetchedUser = user.docs.map(item => ({
             ...item.data(),
             id: item.data().username
         }))
-        const result = await fetchedUser.find(user => user.id === pageId)
+        const result = fetchedUser.find(user => user.id === pageId)
 
         return { props: { result } }
     }
@@ -32,9 +35,13 @@
 
 {#if result}
     <Profile
+        profileId={result.userId}
         username={result.username}
         fullName={result.fullName}
-        followers={result.followers}
+        followers={result.followers.length}
         following={result.following}
+        followed={result.followed}
     />
+{:else}
+    <p>Loading...</p>
 {/if}

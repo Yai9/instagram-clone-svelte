@@ -5,7 +5,7 @@
     import { likeUserPhoto } from '../services/firebase.js'
     import { fade } from 'svelte/transition'
 
-    const dispatch = createEventDispatcher()
+    const dispatch = createEventDispatcher();
 
     export let photoId
     export let docId
@@ -15,7 +15,7 @@
     export let comments
     export let likes = []
     export let liked
-    $: console.log(liked, 'likedddd')
+    
     const likePhotoHandler = async () => {
         dispatch('like-user-photo', docId)
         liked = !liked

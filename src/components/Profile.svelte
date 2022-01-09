@@ -1,10 +1,49 @@
 <script>
     import Header from '../UI/Header.svelte'
+    import users from '../stores/userStore'
+    import profiles from '../stores/profileStore'
 
+
+    import {onMount} from 'svelte'
+    import {followUser} from '../services/firebase'
+
+    export let profileId
     export let username
     export let fullName
     export let followers
     export let following
+    export let followed
+
+    $: isMyProfile = $users.uid === profileId
+    $: isProfileFollowed = followed
+    $: isButtonToggled = false
+
+    $: docId = !isMyProfile ? $profiles.find(profile=> profile.userId === profileId).profileId : profileId
+
+    const toggleFollowButtonHandler = () => {
+        isButtonToggled = !isButtonToggled
+    }
+
+    const userFollowHandler = async () => {
+       const res =  await followUser($users.uid, docId, false)
+       const data = res.find(profile=>profile.profileId === docId)
+       isProfileFollowed = data.followed
+       followers = data.followers.length
+       isButtonToggled = false
+       console.log(res,'res')
+       return res
+    }
+
+    const userUnfollowHandler = async () => {
+       const res = await followUser($users.uid, docId, true)
+        const data = res.find(profile=>profile.profileId === docId)
+        isProfileFollowed = data.followed
+        followers = data.followers.length
+        return res
+
+    }
+
+    $:console.log(docId,'docId')
 </script>
 
 <svelte:head>
@@ -23,10 +62,40 @@
                 />
                 <section class="grid grid-cols-3 list-none">
                     <p class="font-bold text-2xl mr-8">{username}</p>
-                    <button
-                        class="px-4 bg-white border-2 border-gray-200 rounded max-h-8 font-bold"
-                        >Edit Profile</button
-                    >
+                    <div class="grid ml-auto mr-auto">
+                        <div class="flex">
+                            <button
+                                class={`px-4 ${
+                                    isProfileFollowed || isMyProfile
+                                        ? 'bg-white'
+                                        : 'bg-blue-600 text-white border-2 border-blue-700'
+                                } bg-white border-2 border-gray-200 rounded max-h-8 font-bold`}
+                                on:click={userFollowHandler}
+                                >{isMyProfile
+                                    ? 'Edit Profile'
+                                    : isProfileFollowed
+                                    ? 'Following'
+                                    : 'Follow'}</button
+                            >
+                                {#if isProfileFollowed}
+                            <button
+                                class="flex bg-white border-2 border-gray-200 rounded w-8 justify-center max-h-8 font-bold"
+                                on:click={toggleFollowButtonHandler}
+                            >
+                                v
+                            </button>
+                            {/if}
+                        </div>
+                        {#if isButtonToggled && isProfileFollowed}
+                        <button
+                            class="flex bg-white border-2 border-gray-200 rounded w-38 justify-center max-h-8 font-bold"
+                            on:click={userUnfollowHandler}
+                        >
+                            Unfollow
+                    </button>
+                        {/if}
+                    </div>
+
                     <svg
                         aria-label="Options"
                         class="mt-1 ml-2"
@@ -42,8 +111,9 @@
                             fill-rule="evenodd"
                         /></svg
                     >
+
                     <li>posts</li>
-                    <li>{followers.length} followers</li>
+                    <li>{followers} followers</li>
                     <li>{following.length} following</li>
                 </section>
             </div>

@@ -70,7 +70,6 @@ export const followUser = async (userId, profileId, followed) => {
                 following: !followed
                     ? FieldValue.arrayUnion(followedProfileId.userId)
                     : FieldValue.arrayRemove(followedProfileId.userId),
-                followed: !followed
             })
     }
     const suggestedProfiles = await firebase
@@ -88,7 +87,7 @@ export const followUser = async (userId, profileId, followed) => {
 }
 
 export const getUserPhotos = async (userId, following) => {
-	const result = await firebase
+    const result = await firebase
         .firestore()
         .collection('photos')
         .where('userId', 'in', following)
@@ -101,34 +100,36 @@ export const getUserPhotos = async (userId, following) => {
 
     const followedUserPhotoWithDetails = await Promise.all(
         followedUserPhotos.map(async photo => {
-		  let userLikedPhoto = false;
-      if (photo.likes.includes(userId)) {
-        userLikedPhoto = true;
-      }
+            let userLikedPhoto = false;
+            if (photo.likes.includes(userId)) {
+                userLikedPhoto = true;
+            }
             const user = await getUserById(photo.userId)
             const username = user.map(item => item.username)
-		return { username, ...photo, userLikedPhoto}
+            return { username, ...photo, userLikedPhoto }
         })
     )
-	console.log(followedUserPhotoWithDetails,'getphotos')
-    return followedUserPhotoWithDetails 
+    console.log(followedUserPhotoWithDetails, 'getphotos')
+    return followedUserPhotoWithDetails
 }
 
 export const likeUserPhoto = async (userId, profileId, liked) => {
-	await firebase
+    await firebase
         .firestore()
         .collection('photos')
         .doc(profileId)
-        .update({ likes: !liked
+        .update({
+            likes: liked
                 ? FieldValue.arrayUnion(userId)
-                : FieldValue.arrayRemove(userId)})
-    const userPhotosData = await firebase.firestore().collection('photos').get()
-	const userPhotos = userPhotosData.docs.map(photo=>({
-		...photo.data(),
-		userLikedPhoto: liked
-	}))
-	console.log(liked,'likedwtf')
-	console.log(userPhotos,'userPhotosData')
-	return userPhotos
+                : FieldValue.arrayRemove(userId)
+        })
+    const userPhotosData = await firebase.firestore().collection('photos').get();
+    const userPhotos = userPhotosData.docs.map(photo => ({
+        ...photo.data(),
+    }));
+
+    console.log(liked, 'likedwtf');
+    console.log(userPhotos, 'userPhotosData');
+    return userPhotos;
 
 }
