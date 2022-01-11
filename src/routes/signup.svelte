@@ -143,12 +143,6 @@
         <div class="flex flex-row items-center mx-auto w-64 h-44">
             <a
                 ><img
-                    class="h-12 w-auto"
-                    src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/180ae7a0bcf7.png"
-                /></a
-            >
-            <a
-                ><img
                     src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/e9cd846dc748.png"
                 /></a
             >

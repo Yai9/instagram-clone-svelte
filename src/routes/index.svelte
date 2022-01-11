@@ -2,7 +2,7 @@
     export const prerender = true
 </script>
 
-<script lang="ts">
+<script>
     import App from '../components/App.svelte'
     import { firebase, FieldValue } from '../lib/firebase.js'
 
