@@ -3,9 +3,12 @@
     import users from '../stores/userStore'
     import profiles from '../stores/profileStore'
 
-
-    import {onMount} from 'svelte'
-    import {followUser} from '../services/firebase'
+    import { onMount } from 'svelte'
+    import {
+        followUser,
+        getUserById,
+        displayProfilePhotos
+    } from '../services/firebase'
 
     export let profileId
     export let username
@@ -14,36 +17,54 @@
     export let following
     export let followed
 
+    let currentUserdocId
+    let profilePhotos = []
+
+    onMount(async () => {
+        const data = await getUserById($users.uid)
+        data.map(user => (currentUserdocId = user.docId))
+    })
+
+    onMount(async () => {
+        const data = await displayProfilePhotos(profileId)
+        profilePhotos = data.map(photo => ({
+            ...photo
+        }))
+        console.log(profilePhotos, 'displayedPhotosData')
+    })
+
     $: isMyProfile = $users.uid === profileId
     $: isProfileFollowed = followed
     $: isButtonToggled = false
 
-    $: docId = !isMyProfile ? $profiles.find(profile=> profile.userId === profileId).profileId : profileId
+    $: docId = !isMyProfile
+        ? $profiles.find(profile => profile.userId === profileId).profileId
+        : currentUserdocId
 
     const toggleFollowButtonHandler = () => {
         isButtonToggled = !isButtonToggled
     }
 
     const userFollowHandler = async () => {
-       const res =  await followUser($users.uid, docId, false)
-       const data = res.find(profile=>profile.profileId === docId)
-       isProfileFollowed = data.followed
-       followers = data.followers.length
-       isButtonToggled = false
-       console.log(res,'res')
-       return res
+        const res = await followUser($users.uid, docId, false)
+        const data = res.find(profile => profile.profileId === docId)
+        isProfileFollowed = data.followed
+        followers = data.followers.length
+        isButtonToggled = false
+        console.log(res, 'res')
+        return res
     }
 
     const userUnfollowHandler = async () => {
-       const res = await followUser($users.uid, docId, true)
-        const data = res.find(profile=>profile.profileId === docId)
+        const res = await followUser($users.uid, docId, true)
+        const data = res.find(profile => profile.profileId === docId)
         isProfileFollowed = data.followed
         followers = data.followers.length
         return res
-
     }
 
-    $:console.log(docId,'docId')
+    $: console.log(docId, 'docId')
+    $: console.log($users, 'currUser')
 </script>
 
 <svelte:head>
@@ -52,15 +73,15 @@
 
 <Header />
 <div class="grid justify-center">
-    <div class="max-w-32" style="max-width:900px">
-        <header>
-            <div class="grid grid-cols-2 ml-auto mb-8">
-                <img
-                    class="rounded-full"
-                    style="width:150px; height:150px"
-                    src={`../../static/${username}.jpg`}
-                />
-                <section class="grid grid-cols-3 list-none">
+    <div style="width:750px">
+        <div class="flex justify-between w-full mb-8">
+            <img
+                class="rounded-full"
+                style="width:150px; height:150px"
+                src={`../../static/${username}.jpg`}
+            />
+            <section class="flex flex-col w-3/6">
+                <div class="flex justify-center">
                     <p class="font-bold text-2xl mr-8">{username}</p>
                     <div class="grid ml-auto mr-auto">
                         <div class="flex">
@@ -68,7 +89,7 @@
                                 class={`px-4 ${
                                     isProfileFollowed || isMyProfile
                                         ? 'bg-white'
-                                        : 'bg-blue-600 text-white border-2 border-blue-700'
+                                        : 'bg-blue-600 text-white border-2 border-blue-700 px-11'
                                 } bg-white border-2 border-gray-200 rounded max-h-8 font-bold`}
                                 on:click={userFollowHandler}
                                 >{isMyProfile
@@ -77,28 +98,28 @@
                                     ? 'Following'
                                     : 'Follow'}</button
                             >
-                                {#if isProfileFollowed}
-                            <button
-                                class="flex bg-white border-2 border-gray-200 rounded w-8 justify-center max-h-8 font-bold"
-                                on:click={toggleFollowButtonHandler}
-                            >
-                                v
-                            </button>
+                            {#if isProfileFollowed}
+                                <button
+                                    class="flex bg-white border-2 border-gray-200 rounded w-8 justify-center max-h-8 font-bold"
+                                    on:click={toggleFollowButtonHandler}
+                                >
+                                    v
+                                </button>
                             {/if}
                         </div>
                         {#if isButtonToggled && isProfileFollowed}
-                        <button
-                            class="flex bg-white border-2 border-gray-200 rounded w-38 justify-center max-h-8 font-bold"
-                            on:click={userUnfollowHandler}
-                        >
-                            Unfollow
-                    </button>
+                            <button
+                                class="flex bg-white border-2 border-gray-200 rounded w-38 justify-center max-h-8 font-bold"
+                                on:click={userUnfollowHandler}
+                            >
+                                Unfollow
+                            </button>
                         {/if}
                     </div>
 
                     <svg
                         aria-label="Options"
-                        class="mt-1 ml-2"
+                        class="mt-1 ml-auto mr-auto"
                         color="#262626"
                         fill="#262626"
                         height="24"
@@ -111,28 +132,39 @@
                             fill-rule="evenodd"
                         /></svg
                     >
-
-                    <li>posts</li>
+                </div>
+                <div class="flex justify-between list-none relative mt-12 ">
+                    <li>{profilePhotos.length} posts</li>
                     <li>{followers} followers</li>
                     <li>{following.length} following</li>
-                </section>
-            </div>
-            <div>
-                <nav class="flex justify-center border-t-2 border-gray-200 ">
-                    <ul
-                        class="grid grid-cols-3 gap-10 uppercase font-bold text-gray-400 py-3"
-                    >
-                        <li>Posts</li>
-                        <li>Saved</li>
-                        <li>Tagged</li>
-                    </ul>
-                </nav>
-                <div class="grid grid-cols-3 gap-3">
-                    <img class="w-64 h-64" src="../../static/photos/1.jpg" />
-                    <img class="w-64 h-64" src="../../static/photos/2.jpg" />
-                    <img class="w-64 h-64" src="../../static/photos/3.jpg" />
                 </div>
+            </section>
+        </div>
+        <div>
+            <nav class="flex justify-center border-t-2 border-gray-200 ">
+                <ul
+                    class="grid grid-cols-3 gap-10 uppercase font-bold text-gray-400 py-3"
+                >
+                    <li>Posts</li>
+                    <li>Saved</li>
+                    <li>Tagged</li>
+                </ul>
+            </nav>
+            <div class="flex gap-3">
+                {#if profilePhotos.length > 0}
+                    {#each profilePhotos as photo}
+                        <img
+                            class="w-64 h-64"
+                            src={`../../static/${photo.imageSrc}`}
+                            alt={photo.caption}
+                        />
+                    {/each}
+                {:else if profilePhotos.length === 0}
+                    <div class="flex justify-center ml-auto mr-auto">
+                        <p>There are no photos to be displayed.</p>
+                    </div>
+                {/if}
             </div>
-        </header>
+        </div>
     </div>
 </div>

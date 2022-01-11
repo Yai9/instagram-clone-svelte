@@ -4,10 +4,8 @@
 
     import SuggestedProfile from './SuggestedProfile.svelte'
     import { onMount } from 'svelte'
-    import { getUserById, getSuggestedProfiles } from '../services/firebase.js'
+    import { getSuggestedProfiles } from '../services/firebase.js'
     import { followUser } from '../services/firebase.js'
-
-    let followed = false
 
     $: if ($users) {
         onMount(async () => {

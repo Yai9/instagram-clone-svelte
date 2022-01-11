@@ -113,6 +113,21 @@ export const getUserPhotos = async (userId, following) => {
     return followedUserPhotoWithDetails
 }
 
+export const displayProfilePhotos = async (userId) => {
+    const result = await firebase
+        .firestore()
+        .collection('photos')
+        .where('userId', '==', userId)
+        .get()
+
+    const userProfilePhotos = result.docs.map(photo => ({
+        ...photo.data(),
+        docId: photo.id
+    }))
+
+    return userProfilePhotos
+}
+
 export const likeUserPhoto = async (userId, profileId, liked) => {
     await firebase
         .firestore()

@@ -5,6 +5,7 @@
 <script lang="ts">
     import App from '../components/App.svelte'
     import { firebase, FieldValue } from '../lib/firebase.js'
+
 </script>
 
 <svelte:head>

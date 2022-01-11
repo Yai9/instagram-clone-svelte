@@ -1,11 +1,7 @@
 <script>
-    import users from '../stores/userStore.js'
-    import { onMount, createEventDispatcher } from 'svelte'
-    import { usePhotos } from '../hooks/usePhotos.js'
-    import { likeUserPhoto } from '../services/firebase.js'
-    import { fade } from 'svelte/transition'
+    import { createEventDispatcher } from 'svelte'
 
-    const dispatch = createEventDispatcher();
+    const dispatch = createEventDispatcher()
 
     export let photoId
     export let docId
@@ -15,7 +11,7 @@
     export let comments
     export let likes = []
     export let liked
-    
+
     const likePhotoHandler = async () => {
         dispatch('like-user-photo', docId)
         liked = !liked

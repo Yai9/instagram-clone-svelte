@@ -1,5 +1,7 @@
 <script>
     import Input from '../UI/Input.svelte'
+    import users from '../stores/userStore'
+
     import { firebase } from '../lib/firebase.js'
     import { validator } from '../helpers/validator.js'
 
@@ -17,11 +19,13 @@
     }
 
     $: console.log(email, 'email')
+    $: console.log($users, 'userrrr')
 
     const loginHandler = async event => {
         event.preventDefault()
         try {
-            await firebase.auth().signInWithEmailAndPassword(email, password)
+          const response =  await firebase.auth().signInWithEmailAndPassword(email, password)
+          console.log(response,'res')
             location.pathname = '/'
         } catch (err) {
             error = err.message
