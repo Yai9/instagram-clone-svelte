@@ -1,5 +1,11 @@
-<div class="flex justify-center w-full h-screen ">
-    <img src="../../static/loader.png" alt="Loader" class="w-32 h-32 my-auto" />
+<script>
+    import users from '../stores/userStore'
+</script>
+
+<div class="flex justify-center w-full h-screen text-gray-500">
+    <div class="flex flex-col my-auto w-full">
+    <img src="../../static/loader.png" alt="Loader" class="flex w-32 h-32 mx-auto" />
+    </div>
 </div>
 
 <style>

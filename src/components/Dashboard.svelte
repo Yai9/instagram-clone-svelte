@@ -3,14 +3,6 @@
     import Header from '../UI/Header.svelte'
     import Timeline from '../components/Timeline.svelte'
     import Sidebar from '../UI/Sidebar.svelte'
-    import { onMount } from 'svelte'
-
-    onMount(() => {
-        console.log('before')
-        return () => {
-            console.log('after')
-        }
-    })
 </script>
 
 <svelte:head>

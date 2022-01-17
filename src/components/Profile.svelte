@@ -19,10 +19,15 @@
 
     let currentUserdocId
     let profilePhotos = []
+    let error
 
     onMount(async () => {
-        const data = await getUserById($users.uid)
-        data.map(user => (currentUserdocId = user.docId))
+        try {
+            const data = await getUserById($users.uid)
+            data.map(user => (currentUserdocId = user.docId))
+        } catch (err) {
+            error = err.message
+        }
     })
 
     onMount(async () => {
@@ -30,16 +35,16 @@
         profilePhotos = data.map(photo => ({
             ...photo
         }))
-        console.log(profilePhotos, 'displayedPhotosData')
     })
 
-    $: isMyProfile = $users.uid === profileId
+    $: isMyProfile = $users && $users.uid === profileId
     $: isProfileFollowed = followed
     $: isButtonToggled = false
 
-    $: docId = !isMyProfile
-        ? $profiles.find(profile => profile.userId === profileId).profileId
-        : currentUserdocId
+    $: docId =
+        $users && $profiles && !isMyProfile
+            ? $profiles.find(profile => profile.userId === profileId).profileId
+            : currentUserdocId
 
     const toggleFollowButtonHandler = () => {
         isButtonToggled = !isButtonToggled
@@ -51,7 +56,6 @@
         isProfileFollowed = data.followed
         followers = data.followers.length
         isButtonToggled = false
-        console.log(res, 'res')
         return res
     }
 
@@ -62,9 +66,6 @@
         followers = data.followers.length
         return res
     }
-
-    $: console.log(docId, 'docId')
-    $: console.log($users, 'currUser')
 </script>
 
 <svelte:head>

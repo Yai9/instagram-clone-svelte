@@ -13,13 +13,9 @@
     let searchResults
     const profileQuery = $page.path.includes('profile')
 
-    $: console.log(profileQuery, 'profileQuery')
-
-    onMount(async () => {
-        await UserAuthListener()
+    onMount(() => {
+        UserAuthListener()
     })
-
-    $: console.log($profiles, 'users')
 
     const searchUsersHandler = event => {
         searchValue = event.target.value
@@ -29,8 +25,6 @@
         console.log(searchResults, 'profilesResult')
         return searchResults
     }
-
-    $: console.log($profiles, 'profiles')
 </script>
 
 <svelte:head>
@@ -117,6 +111,7 @@
                             on:click={() => {
                                 firebase.auth().signOut()
                                 location.pathname = '/login'
+                                localStorage.setItem('dataLoaded', false)
                             }}
                             onKeyDown={event => {
                                 if (event.key === 'Enter') {

@@ -4,29 +4,31 @@
     export async function load({ page }) {
         let pageId = page.params.id
 
-        console.log(pageId)
+        try {
+            const user = await firebase
+                .firestore()
+                .collection('users')
+                .where('username', '==', pageId)
+                .get()
 
-        const user = await firebase
-            .firestore()
-            .collection('users')
-            .where('username', '==', pageId)
-            .get()
-
-        const fetchedUser = user.docs.map(item => ({
-            ...item.data(),
-            id: item.data().username
-        }))
-        const result = fetchedUser.find(user => user.id === pageId)
-
-        return { props: { result } }
+            const fetchedUser = user.docs.map(item => ({
+                ...item.data(),
+                id: item.data().username
+            }))
+            const result = fetchedUser.find(user => user.id === pageId)
+            return { props: { result } }
+        } catch (err) {
+            const error = err.message
+            return { props: { error } }
+        }
     }
 </script>
 
 <script>
     import Profile from '../../components/Profile.svelte'
-    export let result
 
-    $: console.log(result, 'result')
+    export let result
+    export let error
 </script>
 
 <svelte:head>
@@ -43,5 +45,5 @@
         followed={result.followed}
     />
 {:else}
-    <p>Loading...</p>
+    <p>{error}</p>
 {/if}

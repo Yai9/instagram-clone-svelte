@@ -1,11 +1,21 @@
-<script context="module">
-    export const prerender = true
-</script>
-
 <script>
     import App from '../components/App.svelte'
+
+    import users from '../stores/userStore'
+
+    import { UserAuthListener } from '../hooks/userAuthListener'
+    import { onMount } from 'svelte'
     import { firebase, FieldValue } from '../lib/firebase.js'
 
+    onMount(() => {
+        setTimeout(() => {
+            UserAuthListener()
+            if (!$users) {
+                location.pathname = '/login'
+            }
+            loaded = true
+        }, 1000)
+    })
 </script>
 
 <svelte:head>

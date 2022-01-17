@@ -11,12 +11,12 @@
                 >
                     <div class="flex flex-row items-center">
                         <a href={`/profile/${result.username}`}>
-                        <img
-                            class="w-12 h-12 rounded-full"
-                            src={result.username + '.jpg'}
-                            alt={result.username + '.jpg'}
-                        />
-                    </a>
+                            <img
+                                class="w-12 h-12 rounded-full"
+                                src={result.username + '.jpg'}
+                                alt={result.username + '.jpg'}
+                            />
+                        </a>
                         <p class="px-2 font-bold">{result.username}</p>
                     </div>
                     <span>x</span>

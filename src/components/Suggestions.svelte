@@ -7,6 +7,7 @@
     import { getSuggestedProfiles } from '../services/firebase.js'
     import { followUser } from '../services/firebase.js'
 
+
     $: if ($users) {
         onMount(async () => {
             const suggestedProfiles = await getSuggestedProfiles($users.uid)
@@ -20,7 +21,6 @@
 
     const followUserHandler = async event => {
         const profileId = event.detail
-        followed = true
         if ($users) {
             await followUser($users.uid, profileId, false)
         }

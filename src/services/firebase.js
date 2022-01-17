@@ -109,7 +109,6 @@ export const getUserPhotos = async (userId, following) => {
             return { username, ...photo, userLikedPhoto }
         })
     )
-    console.log(followedUserPhotoWithDetails, 'getphotos')
     return followedUserPhotoWithDetails
 }
 
@@ -143,8 +142,6 @@ export const likeUserPhoto = async (userId, profileId, liked) => {
         ...photo.data(),
     }));
 
-    console.log(liked, 'likedwtf');
-    console.log(userPhotos, 'userPhotosData');
     return userPhotos;
 
 }
