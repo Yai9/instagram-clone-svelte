@@ -1,5 +1,4 @@
 import { writable } from 'svelte/store'
-import { firebase, FieldValue } from '../lib/firebase.js'
 
 const profileStore = writable(null)
 

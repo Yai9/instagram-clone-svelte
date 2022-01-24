@@ -26,7 +26,10 @@ __export(exports, {
 });
 var import_index_c6d9d557 = __toModule(require("../../chunks/index-c6d9d557.js"));
 var import_validator_1b9114f4 = __toModule(require("../../chunks/validator-1b9114f4.js"));
-var import_firebase_060a07e6 = __toModule(require("../../chunks/firebase-060a07e6.js"));
+var import_firebase_95a32990 = __toModule(require("../../chunks/firebase-95a32990.js"));
+var import_app = __toModule(require("firebase/app"));
+var import_firestore = __toModule(require("firebase/firestore"));
+var import_auth = __toModule(require("firebase/auth"));
 let customClass = "text-sm text-gray-base w-72 mr-3 py-5 px-2 h-2 border border-gray-primary rounded mb-2";
 const Signup = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slots) => {
   let { email = "" } = $$props;

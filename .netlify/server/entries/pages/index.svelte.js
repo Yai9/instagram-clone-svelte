@@ -25,17 +25,20 @@ __export(exports, {
   default: () => Routes
 });
 var import_index_c6d9d557 = __toModule(require("../../chunks/index-c6d9d557.js"));
-var import_Header_93cc05b7 = __toModule(require("../../chunks/Header-93cc05b7.js"));
-var import_firebase_060a07e6 = __toModule(require("../../chunks/firebase-060a07e6.js"));
+var import_Header_1b333be8 = __toModule(require("../../chunks/Header-1b333be8.js"));
+var import_firebase_95a32990 = __toModule(require("../../chunks/firebase-95a32990.js"));
+var import_app = __toModule(require("firebase/app"));
+var import_firestore = __toModule(require("firebase/firestore"));
+var import_auth = __toModule(require("firebase/auth"));
 const Timeline = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slots) => {
   let $$unsubscribe_users;
-  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_93cc05b7.c, (value) => value);
+  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_1b333be8.c, (value) => value);
   $$unsubscribe_users();
   return `<div class="${"container col-span-2"}">${``}</div>`;
 });
 const Sidebar = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slots) => {
   let $$unsubscribe_users;
-  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_93cc05b7.c, (value) => value);
+  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_1b333be8.c, (value) => value);
   let user;
   {
     console.log(user, "user");
@@ -45,11 +48,11 @@ const Sidebar = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slo
 });
 const Dashboard = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slots) => {
   let $users, $$unsubscribe_users;
-  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_93cc05b7.c, (value) => $users = value);
+  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_1b333be8.c, (value) => $users = value);
   $$unsubscribe_users();
   return `${$$result.head += `${$$result.title = `<title>Instagram</title>`, ""}`, ""}
 
-<div class="${"bg-gray-50 "}">${(0, import_index_c6d9d557.v)(import_Header_93cc05b7.H, "Header").$$render($$result, {}, {}, {})}
+<div class="${"bg-gray-50 "}">${(0, import_index_c6d9d557.v)(import_Header_1b333be8.H, "Header").$$render($$result, {}, {}, {})}
     ${$users ? `<div class="${"grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg"}">${(0, import_index_c6d9d557.v)(Timeline, "Timeline").$$render($$result, {}, {}, {})}
             ${(0, import_index_c6d9d557.v)(Sidebar, "Sidebar").$$render($$result, {}, {}, {})}</div>` : ``}</div>`;
 });
@@ -69,10 +72,10 @@ const css = {
 };
 const Routes = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slots) => {
   let $$unsubscribe_users;
-  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_93cc05b7.c, (value) => value);
+  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_1b333be8.c, (value) => value);
   $$result.css.add(css);
   $$unsubscribe_users();
   return `${$$result.head += `${$$result.title = `<title>Instagram</title>`, ""}`, ""}
 
-<section class="${"svelte-8cruuo"}">${(0, import_index_c6d9d557.v)(App, "App").$$render($$result, { firebase: import_firebase_060a07e6.f, FieldValue: import_firebase_060a07e6.F }, {}, {})}</section>`;
+<section class="${"svelte-8cruuo"}">${(0, import_index_c6d9d557.v)(App, "App").$$render($$result, { firebase: import_firebase_95a32990.f, FieldValue: import_firebase_95a32990.F }, {}, {})}</section>`;
 });
