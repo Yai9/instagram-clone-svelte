@@ -57,7 +57,7 @@
     "isEntry": true,
     "imports": [
       "_index-c6d9d557.js",
-      "_Header-3274ce55.js",
+      "_Header-453de0c6.js",
       "_firebase-0f67d1fd.js"
     ],
     "css": [
@@ -71,7 +71,7 @@
     "imports": [
       "_index-c6d9d557.js",
       "_firebase-0f67d1fd.js",
-      "_Header-3274ce55.js"
+      "_Header-453de0c6.js"
     ]
   },
   "src/routes/signup.svelte": {
@@ -111,8 +111,8 @@
   "__api-e66b1c82.js": {
     "file": "chunks/_api-e66b1c82.js"
   },
-  "_Header-3274ce55.js": {
-    "file": "chunks/Header-3274ce55.js",
+  "_Header-453de0c6.js": {
+    "file": "chunks/Header-453de0c6.js",
     "imports": [
       "_index-c6d9d557.js",
       "_firebase-0f67d1fd.js"

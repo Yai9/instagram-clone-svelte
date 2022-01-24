@@ -161,7 +161,7 @@ const Header = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slot
   $$unsubscribe_page = (0, import_index_c6d9d557.a)(page, (value) => $page = value);
   $$unsubscribe_users = (0, import_index_c6d9d557.a)(customUserStore, (value) => $users = value);
   let searchValue = "";
-  const profileQuery = $page.path.includes("profile");
+  const profileQuery = $page.url.pathname.includes("profile");
   $$unsubscribe_profiles();
   $$unsubscribe_page();
   $$unsubscribe_users();

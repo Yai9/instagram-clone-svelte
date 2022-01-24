@@ -25,20 +25,20 @@ __export(exports, {
   default: () => Routes
 });
 var import_index_c6d9d557 = __toModule(require("../../chunks/index-c6d9d557.js"));
-var import_Header_3274ce55 = __toModule(require("../../chunks/Header-3274ce55.js"));
+var import_Header_453de0c6 = __toModule(require("../../chunks/Header-453de0c6.js"));
 var import_firebase_0f67d1fd = __toModule(require("../../chunks/firebase-0f67d1fd.js"));
 var import_app = __toModule(require("firebase/compat/app"));
 var import_firestore = __toModule(require("firebase/compat/firestore"));
 var import_auth = __toModule(require("firebase/compat/auth"));
 const Timeline = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slots) => {
   let $$unsubscribe_users;
-  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_3274ce55.c, (value) => value);
+  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_453de0c6.c, (value) => value);
   $$unsubscribe_users();
   return `<div class="${"container col-span-2"}">${``}</div>`;
 });
 const Sidebar = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slots) => {
   let $$unsubscribe_users;
-  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_3274ce55.c, (value) => value);
+  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_453de0c6.c, (value) => value);
   let user;
   {
     console.log(user, "user");
@@ -48,11 +48,11 @@ const Sidebar = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slo
 });
 const Dashboard = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slots) => {
   let $users, $$unsubscribe_users;
-  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_3274ce55.c, (value) => $users = value);
+  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_453de0c6.c, (value) => $users = value);
   $$unsubscribe_users();
   return `${$$result.head += `${$$result.title = `<title>Instagram</title>`, ""}`, ""}
 
-<div class="${"bg-gray-50 "}">${(0, import_index_c6d9d557.v)(import_Header_3274ce55.H, "Header").$$render($$result, {}, {}, {})}
+<div class="${"bg-gray-50 "}">${(0, import_index_c6d9d557.v)(import_Header_453de0c6.H, "Header").$$render($$result, {}, {}, {})}
     ${$users ? `<div class="${"grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg"}">${(0, import_index_c6d9d557.v)(Timeline, "Timeline").$$render($$result, {}, {}, {})}
             ${(0, import_index_c6d9d557.v)(Sidebar, "Sidebar").$$render($$result, {}, {}, {})}</div>` : ``}</div>`;
 });
@@ -72,7 +72,7 @@ const css = {
 };
 const Routes = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slots) => {
   let $$unsubscribe_users;
-  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_3274ce55.c, (value) => value);
+  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_453de0c6.c, (value) => value);
   $$result.css.add(css);
   $$unsubscribe_users();
   return `${$$result.head += `${$$result.title = `<title>Instagram</title>`, ""}`, ""}

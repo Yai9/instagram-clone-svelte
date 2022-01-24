@@ -44,7 +44,7 @@ __export(exports, {
 });
 var import_index_c6d9d557 = __toModule(require("../../../chunks/index-c6d9d557.js"));
 var import_firebase_0f67d1fd = __toModule(require("../../../chunks/firebase-0f67d1fd.js"));
-var import_Header_3274ce55 = __toModule(require("../../../chunks/Header-3274ce55.js"));
+var import_Header_453de0c6 = __toModule(require("../../../chunks/Header-453de0c6.js"));
 var import_app = __toModule(require("firebase/compat/app"));
 var import_firestore = __toModule(require("firebase/compat/firestore"));
 var import_auth = __toModule(require("firebase/compat/auth"));
@@ -54,8 +54,8 @@ const Profile = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slo
   let isButtonToggled;
   let $users, $$unsubscribe_users;
   let $profiles, $$unsubscribe_profiles;
-  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_3274ce55.c, (value) => $users = value);
-  $$unsubscribe_profiles = (0, import_index_c6d9d557.a)(import_Header_3274ce55.a, (value) => $profiles = value);
+  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_453de0c6.c, (value) => $users = value);
+  $$unsubscribe_profiles = (0, import_index_c6d9d557.a)(import_Header_453de0c6.a, (value) => $profiles = value);
   let { profileId } = $$props;
   let { username } = $$props;
   let { fullName } = $$props;
@@ -84,7 +84,7 @@ const Profile = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slo
   $$unsubscribe_profiles();
   return `${$$result.head += `${$$result.title = `<title>${(0, import_index_c6d9d557.e)(username)}</title>`, ""}`, ""}
 
-${(0, import_index_c6d9d557.v)(import_Header_3274ce55.H, "Header").$$render($$result, {}, {}, {})}
+${(0, import_index_c6d9d557.v)(import_Header_453de0c6.H, "Header").$$render($$result, {}, {}, {})}
 <div class="${"grid justify-center"}"><div style="${"width:750px"}"><div class="${"flex justify-between w-full mb-8"}"><img class="${"rounded-full"}" style="${"width:150px; height:150px"}"${(0, import_index_c6d9d557.d)("src", `../../static/${username}.jpg`, 0)}>
             <section class="${"flex flex-col w-3/6"}"><div class="${"flex justify-center"}"><p class="${"font-bold text-2xl mr-8"}">${(0, import_index_c6d9d557.e)(username)}</p>
                     <div class="${"grid ml-auto mr-auto"}"><div class="${"flex"}"><button${(0, import_index_c6d9d557.d)("class", `px-4 ${isProfileFollowed || isMyProfile ? "bg-white" : "bg-blue-600 text-white border-2 border-blue-700 px-11"} bg-white border-2 border-gray-200 rounded max-h-8 font-bold`, 0)}>${(0, import_index_c6d9d557.e)(isMyProfile ? "Edit Profile" : isProfileFollowed ? "Following" : "Follow")}</button>

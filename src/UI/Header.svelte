@@ -11,7 +11,7 @@
 
     let searchValue = ''
     let searchResults
-    const profileQuery = $page.path.includes('profile')
+    const profileQuery = $page.url.pathname.includes('profile')
 
     onMount(() => {
         UserAuthListener()

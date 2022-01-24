@@ -5,7 +5,7 @@ exports.handler = init({
 	assets: new Set(["favicon.png","icon.png","iphone-with-picture.png","jonas.jpg","loader.png","logo.png","ludo.jpg","photos/1.jpg","photos/2.jpg","photos/3.jpg","photos/4.jpg","photos/5.jpg","robots.txt","svelte-welcome.png","svelte-welcome.webp","ursula.jpg","xboy.jpg","yai.jpg"]),
 	_: {
 		mime: {".png":"image/png",".jpg":"image/jpeg",".txt":"text/plain",".webp":"image/webp"},
-		entry: {"file":"start-a74092dd.js","js":["start-a74092dd.js","chunks/vendor-1cf4823d.js"],"css":[]},
+		entry: {"file":"start-ff68cae6.js","js":["start-ff68cae6.js","chunks/vendor-1cf4823d.js"],"css":[]},
 		nodes: [
 			() => Promise.resolve().then(() => require('../server/nodes/0.js')),
 			() => Promise.resolve().then(() => require('../server/nodes/1.js')),
