@@ -1,6 +1,6 @@
-import Firebase from 'firebase/compat/app';
-import 'firebase/compat/firestore'
-import 'firebase/compat/auth'
+import Firebase from 'firebase/app';
+import 'firebase/firestore'
+import 'firebase/auth'
 
 import { seedDatabase } from '../seed'
 
