@@ -29,15 +29,14 @@ const manifest = {
   assets: new Set(["favicon.png", "icon.png", "iphone-with-picture.png", "jonas.jpg", "loader.png", "logo.png", "ludo.jpg", "photos/1.jpg", "photos/2.jpg", "photos/3.jpg", "photos/4.jpg", "photos/5.jpg", "robots.txt", "svelte-welcome.png", "svelte-welcome.webp", "ursula.jpg", "xboy.jpg", "yai.jpg"]),
   _: {
     mime: { ".png": "image/png", ".jpg": "image/jpeg", ".txt": "text/plain", ".webp": "image/webp" },
-    entry: { "file": "start-ff68cae6.js", "js": ["start-ff68cae6.js", "chunks/vendor-1cf4823d.js"], "css": [] },
+    entry: { "file": "start-aaa39ca2.js", "js": ["start-aaa39ca2.js", "chunks/vendor-60d3b1bc.js"], "css": [] },
     nodes: [
       () => Promise.resolve().then(() => __toModule(require("./nodes/0.js"))),
       () => Promise.resolve().then(() => __toModule(require("./nodes/1.js"))),
       () => Promise.resolve().then(() => __toModule(require("./nodes/2.js"))),
       () => Promise.resolve().then(() => __toModule(require("./nodes/3.js"))),
       () => Promise.resolve().then(() => __toModule(require("./nodes/4.js"))),
-      () => Promise.resolve().then(() => __toModule(require("./nodes/5.js"))),
-      () => Promise.resolve().then(() => __toModule(require("./nodes/6.js")))
+      () => Promise.resolve().then(() => __toModule(require("./nodes/5.js")))
     ],
     routes: [
       {
@@ -71,26 +70,6 @@ const manifest = {
         path: "/login",
         a: [0, 5],
         b: [1]
-      },
-      {
-        type: "endpoint",
-        pattern: /^\/todos\.json$/,
-        params: null,
-        load: () => Promise.resolve().then(() => __toModule(require("./entries/endpoints/todos/index.json.ts.js")))
-      },
-      {
-        type: "page",
-        pattern: /^\/todos\/?$/,
-        params: null,
-        path: "/todos",
-        a: [0, 6],
-        b: [1]
-      },
-      {
-        type: "endpoint",
-        pattern: /^\/todos\/([^/]+?)\.json$/,
-        params: (m) => ({ uid: m[1] }),
-        load: () => Promise.resolve().then(() => __toModule(require("./entries/endpoints/todos/_uid_.json.ts.js")))
       }
     ]
   }
