@@ -104,8 +104,8 @@ ${(0, import_index_c6d9d557.v)(import_Header_1b333be8.H, "Header").$$render($$re
     return `<img class="${"w-64 h-64"}"${(0, import_index_c6d9d557.d)("src", `../../static/${photo.imageSrc}`, 0)}${(0, import_index_c6d9d557.d)("alt", photo.caption, 0)}>`;
   })}` : `${profilePhotos.length === 0 ? `<div class="${"flex justify-center ml-auto mr-auto"}"><p>There are no photos to be displayed.</p></div>` : ``}`}</div></div></div></div>`;
 });
-async function load({ page }) {
-  let pageId = page.params.id;
+async function load({ params }) {
+  let pageId = params.id;
   try {
     const user = await import_firebase_95a32990.f.firestore().collection("users").where("username", "==", pageId).get();
     const fetchedUser = user.docs.map((item) => __spreadProps(__spreadValues({}, item.data()), { id: item.data().username }));

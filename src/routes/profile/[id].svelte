@@ -1,8 +1,8 @@
 <script context="module">
     import { firebase } from '../../lib/firebase.js'
 
-    export async function load({ page }) {
-        let pageId = page.params.id
+    export async function load({ params }) {
+        let pageId = params.id
 
         try {
             const user = await firebase

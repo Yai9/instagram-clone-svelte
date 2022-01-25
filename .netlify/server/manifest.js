@@ -29,7 +29,7 @@ const manifest = {
   assets: new Set(["favicon.png", "icon.png", "iphone-with-picture.png", "jonas.jpg", "loader.png", "logo.png", "ludo.jpg", "photos/1.jpg", "photos/2.jpg", "photos/3.jpg", "photos/4.jpg", "photos/5.jpg", "robots.txt", "svelte-welcome.png", "svelte-welcome.webp", "ursula.jpg", "xboy.jpg", "yai.jpg"]),
   _: {
     mime: { ".png": "image/png", ".jpg": "image/jpeg", ".txt": "text/plain", ".webp": "image/webp" },
-    entry: { "file": "start-de046c94.js", "js": ["start-de046c94.js", "chunks/vendor-0a38adf9.js"], "css": [] },
+    entry: { "file": "start-3c12637a.js", "js": ["start-3c12637a.js", "chunks/vendor-0a38adf9.js"], "css": [] },
     nodes: [
       () => Promise.resolve().then(() => __toModule(require("./nodes/0.js"))),
       () => Promise.resolve().then(() => __toModule(require("./nodes/1.js"))),
