@@ -14,6 +14,7 @@
     },
     "devDependencies": {
         "@sveltejs/adapter-netlify": "^1.0.0-next.42",
+        "@sveltejs/adapter-node": "^1.0.0-next.0",
         "@testing-library/jest-dom": "^5.14.1",
         "@testing-library/svelte": "^3.0.3",
         "@types/cookie": "^0.4.0",
