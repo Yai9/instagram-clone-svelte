@@ -4,6 +4,6 @@
 /.svelte-kit
 /functions
 /package
-/.firebase
-/.github
-/.netlify
+.firebase
+.github
+.netlify

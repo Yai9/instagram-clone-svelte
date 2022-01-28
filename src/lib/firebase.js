@@ -1,6 +1,4 @@
-import Firebase from 'firebase/app'
-import 'firebase/firestore'
-import 'firebase/auth'
+import Firebase from 'firebase'
 
 //import { seedDatabase } from '../seed'
 
@@ -14,7 +12,7 @@ const config = {
   measurementId: "G-5FRJ8YQ7P6"
 };
 
-const firebase = Firebase.initializeApp(config)
+const firebase = Firebase.default.initializeApp(config)
 
 const { FieldValue } = Firebase.firestore
 

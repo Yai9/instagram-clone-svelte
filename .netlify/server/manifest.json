@@ -41,8 +41,8 @@
     "isEntry": true,
     "imports": [
       "_index-c6d9d557.js",
-      "_Header-1b333be8.js",
-      "_firebase-95a32990.js"
+      "_Header-4eadfd7f.js",
+      "_firebase-6a02f7df.js"
     ],
     "css": [
       "assets/entries/pages/index.svelte-83384ce9.css"
@@ -54,8 +54,8 @@
     "isEntry": true,
     "imports": [
       "_index-c6d9d557.js",
-      "_firebase-95a32990.js",
-      "_Header-1b333be8.js"
+      "_firebase-6a02f7df.js",
+      "_Header-4eadfd7f.js"
     ]
   },
   "src/routes/signup.svelte": {
@@ -65,7 +65,7 @@
     "imports": [
       "_index-c6d9d557.js",
       "_validator-1b9114f4.js",
-      "_firebase-95a32990.js"
+      "_firebase-6a02f7df.js"
     ]
   },
   "src/routes/login.svelte": {
@@ -75,21 +75,21 @@
     "imports": [
       "_index-c6d9d557.js",
       "_validator-1b9114f4.js",
-      "_firebase-95a32990.js"
+      "_firebase-6a02f7df.js"
     ]
   },
   "_index-c6d9d557.js": {
     "file": "chunks/index-c6d9d557.js"
   },
-  "_Header-1b333be8.js": {
-    "file": "chunks/Header-1b333be8.js",
+  "_Header-4eadfd7f.js": {
+    "file": "chunks/Header-4eadfd7f.js",
     "imports": [
       "_index-c6d9d557.js",
-      "_firebase-95a32990.js"
+      "_firebase-6a02f7df.js"
     ]
   },
-  "_firebase-95a32990.js": {
-    "file": "chunks/firebase-95a32990.js"
+  "_firebase-6a02f7df.js": {
+    "file": "chunks/firebase-6a02f7df.js"
   },
   "_validator-1b9114f4.js": {
     "file": "chunks/validator-1b9114f4.js",

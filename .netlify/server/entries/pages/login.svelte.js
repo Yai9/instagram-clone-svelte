@@ -26,10 +26,8 @@ __export(exports, {
 });
 var import_index_c6d9d557 = __toModule(require("../../chunks/index-c6d9d557.js"));
 var import_validator_1b9114f4 = __toModule(require("../../chunks/validator-1b9114f4.js"));
-var import_firebase_95a32990 = __toModule(require("../../chunks/firebase-95a32990.js"));
-var import_app = __toModule(require("firebase/app"));
-var import_firestore = __toModule(require("firebase/firestore"));
-var import_auth = __toModule(require("firebase/auth"));
+var import_firebase_6a02f7df = __toModule(require("../../chunks/firebase-6a02f7df.js"));
+var import_firebase = __toModule(require("firebase"));
 const Login = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slots) => {
   let { email = "" } = $$props;
   let { password = "" } = $$props;

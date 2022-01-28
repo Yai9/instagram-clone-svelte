@@ -43,19 +43,17 @@ __export(exports, {
   load: () => load
 });
 var import_index_c6d9d557 = __toModule(require("../../../chunks/index-c6d9d557.js"));
-var import_firebase_95a32990 = __toModule(require("../../../chunks/firebase-95a32990.js"));
-var import_Header_1b333be8 = __toModule(require("../../../chunks/Header-1b333be8.js"));
-var import_app = __toModule(require("firebase/app"));
-var import_firestore = __toModule(require("firebase/firestore"));
-var import_auth = __toModule(require("firebase/auth"));
+var import_firebase_6a02f7df = __toModule(require("../../../chunks/firebase-6a02f7df.js"));
+var import_Header_4eadfd7f = __toModule(require("../../../chunks/Header-4eadfd7f.js"));
+var import_firebase = __toModule(require("firebase"));
 const Profile = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slots) => {
   let isMyProfile;
   let isProfileFollowed;
   let isButtonToggled;
   let $users, $$unsubscribe_users;
   let $profiles, $$unsubscribe_profiles;
-  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_1b333be8.c, (value) => $users = value);
-  $$unsubscribe_profiles = (0, import_index_c6d9d557.a)(import_Header_1b333be8.a, (value) => $profiles = value);
+  $$unsubscribe_users = (0, import_index_c6d9d557.a)(import_Header_4eadfd7f.c, (value) => $users = value);
+  $$unsubscribe_profiles = (0, import_index_c6d9d557.a)(import_Header_4eadfd7f.a, (value) => $profiles = value);
   let { profileId } = $$props;
   let { username } = $$props;
   let { fullName } = $$props;
@@ -84,7 +82,7 @@ const Profile = (0, import_index_c6d9d557.c)(($$result, $$props, $$bindings, slo
   $$unsubscribe_profiles();
   return `${$$result.head += `${$$result.title = `<title>${(0, import_index_c6d9d557.e)(username)}</title>`, ""}`, ""}
 
-${(0, import_index_c6d9d557.v)(import_Header_1b333be8.H, "Header").$$render($$result, {}, {}, {})}
+${(0, import_index_c6d9d557.v)(import_Header_4eadfd7f.H, "Header").$$render($$result, {}, {}, {})}
 <div class="${"grid justify-center"}"><div style="${"width:750px"}"><div class="${"flex justify-between w-full mb-8"}"><img class="${"rounded-full"}" style="${"width:150px; height:150px"}"${(0, import_index_c6d9d557.d)("src", `../../static/${username}.jpg`, 0)}>
             <section class="${"flex flex-col w-3/6"}"><div class="${"flex justify-center"}"><p class="${"font-bold text-2xl mr-8"}">${(0, import_index_c6d9d557.e)(username)}</p>
                     <div class="${"grid ml-auto mr-auto"}"><div class="${"flex"}"><button${(0, import_index_c6d9d557.d)("class", `px-4 ${isProfileFollowed || isMyProfile ? "bg-white" : "bg-blue-600 text-white border-2 border-blue-700 px-11"} bg-white border-2 border-gray-200 rounded max-h-8 font-bold`, 0)}>${(0, import_index_c6d9d557.e)(isMyProfile ? "Edit Profile" : isProfileFollowed ? "Following" : "Follow")}</button>
@@ -107,7 +105,7 @@ ${(0, import_index_c6d9d557.v)(import_Header_1b333be8.H, "Header").$$render($$re
 async function load({ params }) {
   let pageId = params.id;
   try {
-    const user = await import_firebase_95a32990.f.firestore().collection("users").where("username", "==", pageId).get();
+    const user = await import_firebase_6a02f7df.f.firestore().collection("users").where("username", "==", pageId).get();
     const fetchedUser = user.docs.map((item) => __spreadProps(__spreadValues({}, item.data()), { id: item.data().username }));
     const result = fetchedUser.find((user2) => user2.id === pageId);
     return { props: { result } };
