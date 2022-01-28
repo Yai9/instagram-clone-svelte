@@ -1,5 +1,5 @@
 import users from '../stores/userStore.js'
-import { getUserPhotos, getUserById } from '../services/firebase'
+import { getUserPhotos, getUserById } from '../services/firebase.js'
 
 export const usePhotos = async () => {
     let data;

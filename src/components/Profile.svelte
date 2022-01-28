@@ -1,7 +1,7 @@
 <script>
     import Header from '../UI/Header.svelte'
-    import users from '../stores/userStore'
-    import profiles from '../stores/profileStore'
+    import users from '../stores/userStore.js'
+    import profiles from '../stores/profileStore.js'
 
     import { onMount } from 'svelte'
     import {

@@ -1,6 +1,5 @@
 import users from '../stores/userStore.js'
 import { firebase } from '../lib/firebase.js'
-import { onMount, onDestroy } from 'svelte'
 
 export const UserAuthListener = () => {
     const listener = firebase.auth().onAuthStateChanged(authState => {

@@ -3,7 +3,7 @@
 
     import users from '../stores/userStore'
 
-    import { UserAuthListener } from '../hooks/userAuthListener'
+    import { UserAuthListener } from '../hooks/userAuthListener.js'
     import { onMount } from 'svelte'
     import { firebase, FieldValue } from '../lib/firebase.js'
 
