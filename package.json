@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "svelte-kit dev",
-    "build": "node --experimental-specifier-resolution=node node_modules/@sveltejs/kit/dist/cli.js build",
+    "build": "svelte-kit build",
     "preview": "svelte-kit preview",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --ignore-path .gitignore  --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
